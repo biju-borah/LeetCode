@@ -45,15 +45,17 @@ class ReverseLL {
 
     public void reverse() {
         Node node = head;
-        Node nextNode = head.next;
-        Node temp = head.next.next;
-        while (nextNode.next != null) {
+        Node nextNode = node.next;
+        while (nextNode != null) {
+            Node temp = nextNode.next;
+            System.out.println(node.data);
             nextNode.next = node;
             node = nextNode;
             nextNode = temp;
-            temp = temp.next;
         }
-        head = nextNode;
+        System.out.println(node.data);
+        head.next = null;
+        head = node;
         printLinkedList();
     }
 
@@ -63,6 +65,7 @@ class ReverseLL {
         LinkedList.addNode(4);
         LinkedList.addNode(3);
         LinkedList.addNode(2);
+        LinkedList.addNode(1);
         LinkedList.reverse();
     }
 }
