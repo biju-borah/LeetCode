@@ -1,4 +1,4 @@
-package LinkedList.Easy.Medium;
+package LinkedList.Medium;
 
 public class RemoveN {
     ListNode head;
