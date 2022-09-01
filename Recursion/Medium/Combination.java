@@ -2,15 +2,14 @@ import java.util.*;
 
 public class Combination {
     public static void helper(int nums[], int k, int index, ArrayList<Integer> cur, List<List<Integer>> result) {
-        if (index == k) {
+        if (cur.size() == k) {
             result.add(new ArrayList<>(cur));
+            return;
         }
-
         for (int i = index; i < nums.length; i++) {
             cur.add(nums[i]);
             helper(nums, k, i + 1, cur, result);
             cur.remove(cur.size() - 1);
-            // helper(nums, k, i + 1, cur, result);
         }
     }
 
@@ -26,7 +25,7 @@ public class Combination {
     }
 
     public static void main(String[] args) {
-        for (List<Integer> list : combine(4, 2)) {
+        for (List<Integer> list : combine(4, 3)) {
             System.err.println(list);
         }
     }
