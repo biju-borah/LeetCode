@@ -1,17 +1,17 @@
 import java.util.*;
 
 public class LetterCombination {
-    public static void helper(String[] key, int l, String digits, HashMap<Character, String> hashMap) {
+    public static void helper(String[] key, int l, String digits, HashMap<Character, String> hashMap, String res,
+            List<String> list) {
         if (l == digits.length()) {
-            System.out.print(key[l]);
-            System.out.println();
+            System.out.println(res);
+            list.add(res);
             return;
         }
-        for (int i = 0; i < digits.length(); i++) {
-            String keypad = hashMap.get(digits.charAt(i));
-            for (int j = 0; j < keypad.length(); j++) {
-
-            }
+        String keypad = hashMap.get(digits.charAt(l));
+        for (int j = 0; j < keypad.length(); j++) {
+            char c = keypad.charAt(j);
+            helper(key, l + 1, digits, hashMap, res + c, list);
         }
     }
 
@@ -26,12 +26,14 @@ public class LetterCombination {
         hashMap.put('8', "tuv");
         hashMap.put('9', "wxyz");
         String[] key = { "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
-        helper(key, 0, digits, hashMap);
         List<String> list = new ArrayList<>();
+        if (digits.isEmpty())
+            return list;
+        helper(key, 0, digits, hashMap, "", list);
         return list;
     }
 
     public static void main(String[] args) {
-        letterCombinations("23");
+        letterCombinations("");
     }
 }
