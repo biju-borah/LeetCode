@@ -1,3 +1,4 @@
+package weeklyLeetcode;
 import java.util.Arrays;
 
 public class NumberWays {
